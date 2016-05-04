@@ -1,0 +1,74 @@
+
+/*makes the background of the entire page a light grey.*/
+body {
+  background-color: #E8E8E8 ;
+}
+
+
+.topnav {
+  background-color: #B8B8B8;
+  box-shadow: 2px 2px 3px #989898;
+}
+
+/*makes the logo sit with some space around it in its column div.*/
+.logo {
+  padding: 30px;
+}
+/*selector for the actual pigeon image.*/
+.pigeon-logo {
+  max-height: 300px;
+  min-width: 100px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px #989898;
+}
+
+
+/*****************************
+*****OUTPUT AREA************
+******************************/
+
+/*makes the set of columns in the output div have some top and bottom space.*/
+.outputArea {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/*styles the box in which all the messages go.*/
+#message-output {
+  border: 4px solid #D8D8D8;
+  border-radius: 4px;
+  min-height: 400px;
+  background-color: white;
+  box-shadow: 2px 2px 3px #989898;
+  padding-top: 14px;
+}
+
+.amessage {
+  margin-bottom: 5px;
+  position: relative;
+  padding: 11px;
+}
+/*styles the text box in which each message sits.*/
+.amessage p {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1px;
+  border-radius: 4px;
+}
+
+/*these next two alternate the text box colors.*/
+.amessage:nth-of-type(odd) p {
+  background-color: #D8D8D8;
+}
+
+.amessage:nth-of-type(even) p {
+  background-color: #E8E8E8;
+}
+
+.deleteButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
