@@ -8,7 +8,7 @@ var chatty = (function(chatty) {
 
   var messageDiv = "";
 
-  //this is a function that will run as part of the main arraay-to-dom loop. it creates the div that each message will appear within, adds a class for styling, and basically allows an event listener to be added to each one if we decide we'd like to do that. It's nicer than +='ing the entire div using .innerHTML. 
+  //this is a function that will run as part of the main array-to-dom loop. it creates the div that each message will appear within, adds a class for styling, and basically allows an event listener to be added to each one if we decide we'd like to do that. It's nicer than +='ing the entire div using .innerHTML. 
   chatty.makeMessageDiv = function() {
     let messageDiv = document.createElement("div");
     messageDiv.className = "amessage";
@@ -43,7 +43,7 @@ var chatty = (function(chatty) {
     
     for (var i = 0; i < messageArray.length; i++) {
       //note I'm not using += here because we're making a new div each time, on the line above.
-      messageDiv.innerHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button id="deleteButton">Delete Message</button> </p>`
+      messageDiv.innerHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button class="deleteButton">Delete Message</button> </p>`
     }
   },
   
