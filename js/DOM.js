@@ -15,7 +15,11 @@ var messageOutput = document.getElementById('message-output');
 
 var messageInput = document.getElementById('message-input');
 
-
+document.querySelector("body").addEventListener("click", function() {
+	if (event.target.className === "deleteButton") {
+		chatty.deleteMessage();
+	}
+});
 
 clearMessage.addEventListener("click", temporary);
 darkTheme.addEventListener('change', temporary);
