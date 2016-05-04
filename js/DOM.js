@@ -22,3 +22,10 @@ darkTheme.addEventListener('change', temporary);
 largeText.addEventListener('change', temporary);
 messageOutput.addEventListener("click", temporary)
 messageInput.addEventListener("keyup", chatty.enterKey);
+
+var clearMessage = document.getElementById('clear-all-messages');
+	clearMessage.addEventListener("click", function() {
+		messageOutput.innerHTML = "";
+		chatty.setMessageArray([]);
+	});
+
