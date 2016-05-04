@@ -67,8 +67,8 @@ var chatty = (function(chatty) {
     for (var i = 0; i < messageArray.length; i++) {
       // new messageDiv for each message
       messageDiv = chatty.makeMessageDiv();
-      //note I'm not using += here because we're making a new div each time, on the line above.
-      var messageHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button class="deleteButton">Delete Message</button> </p>`;
+ 
+      var messageHTML = `<p id = "message${[i]}">${messageArray[i]}</p><button class="btn btn-default btn-xs deleteButton">Delete Message</button>`;
       messageDiv.innerHTML = messageHTML;
     }
   },

@@ -18,7 +18,7 @@ messageInput.focus();
 
 // query selector to locate delete buttons on each individual message, then executes function to delete respective message
 document.querySelector("body").addEventListener("click", function() {
-	if (event.target.className === "deleteButton") {
+	if (event.target.className === "btn btn-default btn-xs deleteButton") {
 		chatty.deleteMessage();
 	}
 });

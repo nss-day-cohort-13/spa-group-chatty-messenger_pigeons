@@ -4,26 +4,45 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Messenger Pigeon</title>
+	<link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel = "stylesheet" href = "styles/main.css">
 	<link rel = "stylesheet" href = "styles/darktheme.css">
 </head>
 <body>
-
-	<div class="nav-bar" id="nav-bar">
-		<div class="logo"><img src="images/pigeon2.jpg" alt="logo"></div>
-		<div>
-		  <h2>Messenger Pigeons</h2>
+	<div class= "container-fluid">
+		<div class= "row topnav navbar navbar-fixed-top" id = "nav-bar">
+					<!-- here's the column with the logo in it. -->
+					<div class="logo col-xs-4 col-md-3 col-lg-2">
+						<img class = "pigeon-logo img-responsive" src="images/pigeon2.jpg" alt="logo">
+					</div>
+					<!-- here's the column with the other navbar information in it. -->
+					<div class = "navright col-xs-8 col-md-9 col-lg-10"> 
+		  			<h1 class= "team-name">Messenger Pigeons</h1>
+		  			<p>Send your friends messages the 19th century way</p>
+		  			<div class ="form-group" >
+							<input type="text" class = "#" id="message-input" placeholder="Type your message here! 'Enter' to submit.">
+							<button class = "btn btn-default btn-sm" id= "clear-all-messages">Delete all messages</button>
+						</div>
+						<div class = "styles">
+							<input type="checkbox" name="dark-theme" value="dark-theme" id="dark-theme">  Dark Theme</input>
+							<input type="checkbox" name="large-text" value="large-text" id="large-text">  Large Text</input>
+						</div>
+					</div>
 		</div>
-		<input type="text" id="message-input" placeholder="Type your message here!">
-		<button id= "clear-all-messages">Delete all messages</button>
-		<input type="checkbox" name="dark-theme" value="dark-theme" id="dark-theme">Dark Theme</input>
-		<input type="checkbox" name="large-text" value="large-text" id="large-text">Large Text</input>
 	</div>
-
-<!-- All of the messages will go in here! -->
-	<div id="message-output"></div>
-
+	<div class = "row outputArea">
+		<!-- empty left column for centering output div. -->
+		<div class = "col-xs-1 col-lg-2">
+		</div>
+		<!-- All of the messages will go in here! -->
+		<div id="message-output" class= "message-output col-xs-10 col-lg-8">
+		</div>
+		<!-- empty right column for centering output div. -->
+		<div class = "col-xs-1 col-lg-2">
+		</div>
+		</div>
+	</div>
 </body>
 
 <script src = "js/create.js"></script>
