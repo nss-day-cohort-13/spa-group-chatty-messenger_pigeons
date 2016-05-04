@@ -2,35 +2,42 @@
 //from the JSON file into messageArray
 
 var chatty = (function (chatty) {
-  console.log("now in jsonloader.js");
 
-  var messagesArray = [];
+  // an array to hold messages wrapped as POJOs, first step from JSON
   var messageObjectsArray = [];
 
+  // array that will contain messages as strings, no more objects
+  var messagesArray = [];
+
+  // create a request to retrieve JSON 
   var loader = new XMLHttpRequest();
 
+  // set up loader with callback function
   loader.addEventListener("load", function () {
-    // Set the value of the private array
+    // get the json and put it into a local (private) array 
     messageObjectsArray = JSON.parse(this.responseText).jsonMessages;
-    console.log("15: messageObjectsArray = ", messageObjectsArray);
+
+    // strip off the object wrappers from the messages
     messagesArray = messageObjectsArray.map(extractMessageFromObject);
+
+    // transfer the messages into the private array that create iife can access
     chatty.setMessageArray(messagesArray);
+
+    // post all the messages onto the webpage
     chatty.loopThroughArray();
 
   });
 
+  // now do the actual load from JSON file
   loader.open("GET", "../messages.json");
   loader.send();
 
-  console.log("24: messages = ", messagesArray);
-  console.log("25: chatty = ", chatty);
-
-  // helper function 
+  // helper function to put clean messages (no object wrappers) into array
   function extractMessageFromObject (obj) {
-    console.log("28: obj.message = ", obj.message);
     return obj.message;
   }
 
+  // all done
   return chatty;
 
 }(chatty || {}));

@@ -3,14 +3,15 @@
 var chatty = (function(chatty) {
   
 
-  //this is where the messages will come in and out. 
+  //this is the private array that holds all the messages 
   var messageArray = [];
 
+  // initial Div for holding each message
   var messageDiv = "";
 
+  // setter to take in messages from jsonloader
   chatty.setMessageArray = function (messages) {
     messageArray = messages;
-    console.log("create:13 / messageArray = ", messageArray);
   },
 
 
@@ -28,7 +29,6 @@ var chatty = (function(chatty) {
     messageOutput.appendChild(messageDiv);
     return messageDiv;
   },
-
 
   //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case. 
   chatty.mirrorMessage = function() {
@@ -49,15 +49,21 @@ var chatty = (function(chatty) {
     chatty.loopThroughArray();
   },
 
-  // this function loops through the array each time a new message is added, to make sure the DOM is updated to show all the messages in the array. 
+  // this function loops through the array each time a new message is added, 
+  // to make sure the DOM is updated to show all the messages in the array. 
   // loop through array and output each message to the DOM
   chatty.loopThroughArray = function() { 
-    console.log("create:55 / messageArray = ", messageArray);
-    messageDiv = chatty.makeMessageDiv();
-    
+
+    // clear out prior message list, to start fresh
+    messageOutput.innerHTML = "";
+
+    // now put messages into the DOM
     for (var i = 0; i < messageArray.length; i++) {
+      // new messageDiv for each message
+      messageDiv = chatty.makeMessageDiv();
       //note I'm not using += here because we're making a new div each time, on the line above.
-      messageDiv.innerHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button class="deleteButton">Delete Message</button> </p>`
+      var messageHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button class="deleteButton">Delete Message</button> </p>`;
+      messageDiv.innerHTML = messageHTML;
     }
   },
   
@@ -69,9 +75,6 @@ var chatty = (function(chatty) {
       chatty.mirrorMessage();
     }
   }
-
-
-
   
   return chatty;
 
