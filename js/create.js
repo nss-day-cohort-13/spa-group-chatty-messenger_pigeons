@@ -3,19 +3,32 @@
 var chatty = (function(chatty) {
   
 
-  //this is where the messages will come in and out. 
+  //this is the private array that holds all the messages 
   var messageArray = [];
 
+  // initial Div for holding each message
   var messageDiv = "";
 
-  //this is a function that will run as part of the main array-to-dom loop. it creates the div that each message will appear within, adds a class for styling, and basically allows an event listener to be added to each one if we decide we'd like to do that. It's nicer than +='ing the entire div using .innerHTML. 
+  // setter to take in messages from jsonloader
+  chatty.setMessageArray = function (messages) {
+    messageArray = messages;
+  },
+
+
+  /*this is a function that will run as part of 
+  //the main array-to-dom loop. it creates the 
+  //div that each message will appear within, 
+  //adds a class for styling, and basically allows 
+  //an event listener to be added to each one if 
+  //we decide we'd like to do that. It's nicer 
+  //than +='ing the entire div using .innerHTML. 
+  */
   chatty.makeMessageDiv = function() {
     let messageDiv = document.createElement("div");
     messageDiv.className = "amessage";
     messageOutput.appendChild(messageDiv);
     return messageDiv;
   },
-
 
   //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case. 
   chatty.mirrorMessage = function() {
@@ -36,14 +49,21 @@ var chatty = (function(chatty) {
     chatty.loopThroughArray();
   },
 
-  // this function loops through the array each time a new message is added, to make sure the DOM is updated to show all the messages in the array. 
+  // this function loops through the array each time a new message is added, 
+  // to make sure the DOM is updated to show all the messages in the array. 
+  // loop through array and output each message to the DOM
   chatty.loopThroughArray = function() { 
-    
-    messageDiv = chatty.makeMessageDiv();
-    
+
+    // clear out prior message list, to start fresh
+    messageOutput.innerHTML = "";
+
+    // now put messages into the DOM
     for (var i = 0; i < messageArray.length; i++) {
-      //note I'm not using += here because we're making a new div each time, on the line above.
-      messageDiv.innerHTML = `<p id = "message${[i]}">${messageArray[i]}</p><button class=" btn btn-default btn-xs deleteButton">Delete Message</button> `
+      // new messageDiv for each message
+      messageDiv = chatty.makeMessageDiv();
+ 
+      var messageHTML = `<p id = "message${[i]}">${messageArray[i]}</p><button class=" btn btn-default btn-xs deleteButton">Delete Message</button>`;
+      messageDiv.innerHTML = messageHTML;
     }
   },
   
@@ -55,9 +75,6 @@ var chatty = (function(chatty) {
       chatty.mirrorMessage();
     }
   }
-
-
-
   
   return chatty;
 
