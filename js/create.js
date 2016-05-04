@@ -2,35 +2,30 @@
 
 var chatty = (function(chatty) {
 
-<<<<<<< HEAD
 
-  //this is where the messages will come in and out.
-=======
-  //this is the private array that holds all the messages 
->>>>>>> master
+  //this is the private array that holds all the messages
+
   var messageArray = [];
 
   // initial Div for holding each message
   var messageDiv = "";
 
-<<<<<<< HEAD
-  //this is a function that will run as part of the main array-to-dom loop. it creates the div that each message will appear within, adds a class for styling, and basically allows an event listener to be added to each one if we decide we'd like to do that. It's nicer than +='ing the entire div using .innerHTML.
-=======
+
   // setter to take in messages from jsonloader
   chatty.setMessageArray = function (messages) {
     messageArray = messages;
   },
 
 
-  /*this is a function that will run as part of 
-  //the main array-to-dom loop. it creates the 
-  //div that each message will appear within, 
-  //adds a class for styling, and basically allows 
-  //an event listener to be added to each one if 
-  //we decide we'd like to do that. It's nicer 
-  //than +='ing the entire div using .innerHTML. 
+  /*this is a function that will run as part of
+  //the main array-to-dom loop. it creates the
+  //div that each message will appear within,
+  //adds a class for styling, and basically allows
+  //an event listener to be added to each one if
+  //we decide we'd like to do that. It's nicer
+  //than +='ing the entire div using .innerHTML.
   */
->>>>>>> master
+
   chatty.makeMessageDiv = function() {
     let messageDiv = document.createElement("div");
     messageDiv.className = "amessage";
@@ -38,12 +33,9 @@ var chatty = (function(chatty) {
     return messageDiv;
   },
 
-<<<<<<< HEAD
 
   //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case.
-=======
-  //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case. 
->>>>>>> master
+
   chatty.mirrorMessage = function() {
     console.log("another key was pressed");
   },
@@ -62,23 +54,16 @@ var chatty = (function(chatty) {
     chatty.loopThroughArray();
   },
 
-<<<<<<< HEAD
-  // this function loops through the array each time a new message is added, to make sure the DOM is updated to show all the messages in the array.
-  chatty.loopThroughArray = function() {
-
-    messageDiv = chatty.makeMessageDiv();
-
-=======
-  // this function loops through the array each time a new message is added, 
-  // to make sure the DOM is updated to show all the messages in the array. 
+  // this function loops through the array each time a new message is added,
+  // to make sure the DOM is updated to show all the messages in the array.
   // loop through array and output each message to the DOM
-  chatty.loopThroughArray = function() { 
+  chatty.loopThroughArray = function() {
 
     // clear out prior message list, to start fresh
     messageOutput.innerHTML = "";
 
     // now put messages into the DOM
->>>>>>> master
+
     for (var i = 0; i < messageArray.length; i++) {
       // new messageDiv for each message
       messageDiv = chatty.makeMessageDiv();
@@ -95,9 +80,10 @@ var chatty = (function(chatty) {
     } else {
       chatty.mirrorMessage();
     }
-<<<<<<< HEAD
+
   },
 
+  //allows access to messageArray in other modules
   chatty.setMessageArray = function(updated){
       messageArray = updated;
   },
@@ -105,10 +91,6 @@ var chatty = (function(chatty) {
     return messageArray;
   }
 
-=======
-  }
-  
->>>>>>> master
   return chatty;
 
 
