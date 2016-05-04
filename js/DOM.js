@@ -21,4 +21,4 @@ clearMessage.addEventListener("click", temporary);
 darkTheme.addEventListener('change', temporary);
 largeText.addEventListener('change', temporary);
 messageOutput.addEventListener("click", temporary)
-messageInput.addEventListener("keyup", temporary);
+messageInput.addEventListener("keyup", chatty.enterKey);

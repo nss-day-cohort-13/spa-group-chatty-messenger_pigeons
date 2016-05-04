@@ -22,7 +22,7 @@ var chatty = (function(chatty) {
     console.log("another key was pressed"); 
   },
 
-  //function that runs when enter key is pressed. Submits the current value of the input text to the array pusher, and resets the input text. 
+  //function that runs when enter key is pressed. passes the current value of the input text to the array pusher, and resets the input text. 
   chatty.injectMessage =function() {
     console.log("enter key was pressed");
     this.addMessageToArray(messageInput.value);
@@ -43,7 +43,7 @@ var chatty = (function(chatty) {
     
     for (var i = 0; i < messageArray.length; i++) {
       //note I'm not using += here because we're making a new div each time, on the line above.
-      messageDiv.innerHTML = `<p>${messageArray[i]}</p>`
+      messageDiv.innerHTML = `<p id = "message${[i]}"><span>${messageArray[i]}</span><button id="deleteButton">Delete Message</button> </p>`
     }
   },
   
@@ -65,8 +65,3 @@ var chatty = (function(chatty) {
 
 
 
-var messageInput = document.getElementById("message-input");
-messageInput.addEventListener("keyup", chatty.enterKey);
-
-
-var messageOutput = document.getElementById("message-output");
