@@ -14,6 +14,7 @@ var largeText = document.getElementById('large-text');
 var messageOutput = document.getElementById('message-output');
 
 var messageInput = document.getElementById('message-input');
+messageInput.focus();
 
 document.querySelector("body").addEventListener("click", function() {
 	if (event.target.className === "deleteButton") {
