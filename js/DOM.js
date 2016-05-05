@@ -1,17 +1,9 @@
 console.log("I'm about to run!");
+
+
+var navBar = document.getElementById("nav-bar");
 var messageOutput = document.getElementById("message-output");
-var containerFluid = document.getElementById("container-fluid");
-var rowOutput = document.getElementById("row outputArea");
-var topNav = document.getElementById("nav-bar");
-
-var toggleDark = function(event){
-darkTheme.classList.toggle("dark");
-messageOutput.classList.toggle("dark");
-containerFluid.classList.toggle("dark");
-rowOutput.classList.toggle("dark");
-topNav.classList.toggle("dark");
-}
-
+var outputArea = document.getElementById("outputArea");
 
 
 var temporary = function(event){
@@ -29,11 +21,17 @@ var messageOutput = document.getElementById('message-output');
 var messageInput = document.getElementById('message-input');
 messageInput.focus();
 
+var toggleDark = function(event){
+  outputArea.classList.toggle("darkBackground");
+  messageOutput.classList.toggle("grayBackground");
+  navBar.classList.toggle("darkNav");
+}
+
 // query selector to locate delete buttons on each individual message, then executes function to delete respective message
 document.querySelector("body").addEventListener("click", function() {
-	if (event.target.className === "btn btn-default btn-xs deleteButton") {
-		chatty.deleteMessage();
-	}
+  if (event.target.className === "btn btn-default btn-xs deleteButton") {
+    chatty.deleteMessage();
+  }
 });
 
 clearMessage.addEventListener("click", temporary);
@@ -43,8 +41,11 @@ messageOutput.addEventListener("click", temporary)
 messageInput.addEventListener("keyup", chatty.enterKey);
 
 var clearMessage = document.getElementById('clear-all-messages');
-	clearMessage.addEventListener("click", function() {
-		messageOutput.innerHTML = "";
-		chatty.setMessageArray([]);
-	});
+  clearMessage.addEventListener("click", function() {
+    messageOutput.innerHTML = "";
+    chatty.setMessageArray([]);
+  });
+
+
+
 
