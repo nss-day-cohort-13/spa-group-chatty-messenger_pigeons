@@ -1,5 +1,12 @@
 console.log("I'm about to run!");
 
+var toggleLargeText = function(event) {
+  console.log("large text checkbox toggled", event.target);
+  var largerTextArea = document.getElementById("larger-text-area");
+  console.log("DOM:6 / bodyArea = ", largerTextArea);
+  largerTextArea.classList.toggle("all-large-text");
+
+}
 
 var temporary = function(event){
   console.log("thing was changed", event.target);
@@ -25,7 +32,7 @@ document.querySelector("body").addEventListener("click", function() {
 
 clearMessage.addEventListener("click", temporary);
 darkTheme.addEventListener('change', temporary);
-largeText.addEventListener('change', temporary);
+largeText.addEventListener('change', toggleLargeText);
 messageOutput.addEventListener("click", temporary)
 messageInput.addEventListener("keyup", chatty.enterKey);
 
