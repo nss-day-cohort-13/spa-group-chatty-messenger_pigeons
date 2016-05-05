@@ -1,4 +1,17 @@
 console.log("I'm about to run!");
+var messageOutput = document.getElementById("message-output");
+var containerFluid = document.getElementById("container-fluid");
+var rowOutput = document.getElementById("row outputArea");
+var topNav = document.getElementById("nav-bar");
+
+var toggleDark = function(event){
+darkTheme.classList.toggle("dark");
+messageOutput.classList.toggle("dark");
+containerFluid.classList.toggle("dark");
+rowOutput.classList.toggle("dark");
+topNav.classList.toggle("dark");
+}
+
 
 
 var temporary = function(event){
@@ -24,7 +37,7 @@ document.querySelector("body").addEventListener("click", function() {
 });
 
 clearMessage.addEventListener("click", temporary);
-darkTheme.addEventListener('change', temporary);
+darkTheme.addEventListener('change', toggleDark);
 largeText.addEventListener('change', temporary);
 messageOutput.addEventListener("click", temporary)
 messageInput.addEventListener("keyup", chatty.enterKey);

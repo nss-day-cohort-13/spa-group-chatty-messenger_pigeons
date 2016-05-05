@@ -1,0 +1,35 @@
+
+/*makes the theme dark*/
+/* changes to all the text color and main div background */
+.dark {
+  background-color: black ;
+  font-family: "Cutive Mono", monospace;
+  color: lightskyblue;
+}
+
+/* changes to the navbar  background color */
+.dark {
+  background-color: black;
+}
+
+/*changes to the messaging background color*/
+.dark {
+  border: 4px solid #D8D8D8;
+  border-radius: 4px;
+/*   min-height: 400px;
+ */  background-color: black;
+  box-shadow: 2px 2px 3px #989898;
+  padding-top: 14px;
+}
+
+/*change text box colors.*/
+p.blueField{
+  background-color: darkblue;
+}
+
+p.cyanField{
+  background-color: darkcyan;
+}
+
+
+
