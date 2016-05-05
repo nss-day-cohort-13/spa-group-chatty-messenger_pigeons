@@ -49,7 +49,6 @@ var chatty = (function(chatty) {
 
   chatty.mirrorMessage = function() {
     chatty.disableButton();
-    console.log("another key was pressed");
   },
 
   //function that runs when enter key is pressed. passes the current value of the input text to the array pusher, and resets the input text.
@@ -80,7 +79,8 @@ var chatty = (function(chatty) {
       // new messageDiv for each message
       messageDiv = chatty.makeMessageDiv();
  
-      var messageHTML = `<p id = "message${[i]}">${messageArray[i]}</p><button class = "btn btn-default btn-xs editButton">Edit message</button><button class="btn btn-default btn-xs deleteButton">Delete Message</button>`;
+      var messageHTML = `<p id = "${[i]}">${messageArray[i]}</p><button class = "btn btn-default btn-xs editButton">Edit message</button><button class="btn btn-default btn-xs deleteButton">Delete Message</button>`;
+
 
       messageDiv.innerHTML = messageHTML;
     }
