@@ -1,17 +1,17 @@
 var chatty = (function(chatty)	{
 
-//deletes individual messages
+//deletes individual messages from DOM and messageArray
 chatty.deleteMessage = function() {
 if (event.target.className === "btn btn-default btn-xs deleteButton") {
     //console.log(event.target.parentNode);
     deleteArray = chatty.getMessageArray();
-    console.log(deleteArray);
+    //console.log(deleteArray);
     deleteArray.splice(event.target.parentNode.getAttribute("index"), 1);
     chatty.setMessageArray(deleteArray);
     event.target.parentNode.remove();
 
 		} else {
-      console.log("nothing matches", event.target);
+      //console.log("nothing matches", event.target);
     }
 	};
 	return chatty;
