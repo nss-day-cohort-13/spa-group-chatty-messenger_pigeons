@@ -39,6 +39,10 @@ messageInput.addEventListener("keyup", chatty.enterKey);
 var clearMessage = document.getElementById('clear-all-messages');
 	clearMessage.addEventListener("click", function() {
 		messageOutput.innerHTML = "";
+    //runs a little function that checks to see if the message output is blank, and disables the clear all messages button if it is.
+    chatty.disableButton();
 		chatty.setMessageArray([]);
 	});
+
+
 
