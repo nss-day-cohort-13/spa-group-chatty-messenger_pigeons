@@ -11,6 +11,16 @@ var chatty = (function(chatty) {
   var messageDiv = "";
 
 
+  //function to make the 'clear all messages' button disabled if there are no messages. runs when the clear button is clicked, on the load of the json, and when any key that is not enter is pressed.
+  chatty.disableButton = function(){
+  if (messageOutput.innerHTML === "") {
+    clearMessage.disabled = "disabled";
+    console.log("there are no messages");
+  } else {
+    console.log("there are messages" );
+  };
+  },
+
   // setter to take in messages from jsonloader
   chatty.setMessageArray = function (messages) {
     messageArray = messages;
@@ -37,6 +47,7 @@ var chatty = (function(chatty) {
   //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case.
 
   chatty.mirrorMessage = function() {
+    chatty.disableButton();
     console.log("another key was pressed");
   },
 
