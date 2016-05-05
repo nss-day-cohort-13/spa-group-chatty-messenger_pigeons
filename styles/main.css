@@ -9,7 +9,7 @@ body {
 .topnav {
   background-color: #B8B8B8;
   box-shadow: 0 2px 3px #989898;
- 
+
 }
 
 /*makes the logo sit with some space around it in its column div.*/
@@ -63,7 +63,7 @@ body {
 }
 
 /*styles the box in which all the messages go.*/
-#message-output {
+.message-output {
   border: 4px solid #D8D8D8;
   border-radius: 4px;
   min-height: 400px;
