@@ -57,8 +57,8 @@ body {
 
 /*makes the set of columns in the output div have some top and bottom space.*/
 .outputArea {
-  margin-top: 290px;
-  margin-bottom: 10px;
+  padding-top: 290px;
+  padding-bottom: 10px;
   margin-right: 0;
 }
 
