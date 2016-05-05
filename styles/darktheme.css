@@ -12,7 +12,7 @@
 }
 /* make message background area dark grey */
 .grayBackground {
-  background-color: yellow;
+  background-color: darkgray;
 }
 /*change text box colors.*/
 p.blueField{
