@@ -17,6 +17,7 @@ var chatty = (function(chatty) {
     clearMessage.disabled = "disabled";
     console.log("there are no messages");
   } else {
+    clearMessage.disabled = "";
     console.log("there are messages" );
   };
   },
@@ -88,6 +89,7 @@ var chatty = (function(chatty) {
   chatty.enterKey = function(keyup) {
     if (keyup.keyCode === 13) {
       chatty.injectMessage();
+      chatty.disableButton();
     } else {
       chatty.mirrorMessage();
     }
