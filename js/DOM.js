@@ -4,8 +4,8 @@ var toggleLargeText = function(event) {
   console.log("large text checkbox toggled", event.target);
   var largerTextArea = document.getElementById("outputArea");
   console.log("DOM:6 / outputArea = ", outputArea);
+  console.log("DOM:7 / largerTextArea = ", largerTextArea);
   largerTextArea.classList.toggle("all-large-text");
-
 }
 
 var navBar = document.getElementById("nav-bar");
