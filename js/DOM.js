@@ -36,8 +36,12 @@ var toggleDark = function(event){
 
 // query selector to locate delete buttons on each individual message, then executes function to delete respective message
 document.querySelector("body").addEventListener("click", function() {
-  if (event.target.className === "btn btn-default btn-xs deleteButton") {
-    chatty.deleteMessage();
+
+	if (event.target.className === "btn btn-default btn-xs deleteButton") {
+		chatty.deleteMessage();
+	} else if (event.target.className === "btn btn-default btn-xs editButton") {
+    chatty.editMessage();
+
   }
 });
 
