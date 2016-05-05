@@ -14,6 +14,9 @@ var chatty = (function (chatty) {
 
   // set up loader with callback function
   loader.addEventListener("load", function () {
+
+    chatty.disableButton();
+    
     // get the json and put it into a local (private) array 
     messageObjectsArray = JSON.parse(this.responseText).jsonMessages;
 

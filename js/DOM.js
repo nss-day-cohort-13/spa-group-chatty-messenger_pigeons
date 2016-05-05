@@ -1,5 +1,12 @@
 console.log("I'm about to run!");
 
+var toggleLargeText = function(event) {
+  console.log("large text checkbox toggled", event.target);
+  var largerTextArea = document.getElementById("larger-text-area");
+  console.log("DOM:6 / bodyArea = ", largerTextArea);
+  largerTextArea.classList.toggle("all-large-text");
+
+}
 
 var navBar = document.getElementById("nav-bar");
 var messageOutput = document.getElementById("message-output");
@@ -35,17 +42,25 @@ document.querySelector("body").addEventListener("click", function() {
 });
 
 clearMessage.addEventListener("click", temporary);
+
 darkTheme.addEventListener('change', toggleDark);
-largeText.addEventListener('change', temporary);
+
+largeText.addEventListener('change', toggleLargeText);
+
 messageOutput.addEventListener("click", temporary)
 messageInput.addEventListener("keyup", chatty.enterKey);
 
 var clearMessage = document.getElementById('clear-all-messages');
-  clearMessage.addEventListener("click", function() {
-    messageOutput.innerHTML = "";
-    chatty.setMessageArray([]);
-  });
 
+
+
+
+	clearMessage.addEventListener("click", function() {
+		messageOutput.innerHTML = "";
+    //runs a little function that checks to see if the message output is blank, and disables the clear all messages button if it is.
+    chatty.disableButton();
+		chatty.setMessageArray([]);
+	});
 
 
 

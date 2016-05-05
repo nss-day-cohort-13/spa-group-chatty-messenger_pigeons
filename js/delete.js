@@ -5,6 +5,7 @@ chatty.deleteMessage = function() {
 if (event.target.className === "btn btn-default btn-xs deleteButton") {
     console.log(event.target.parentNode);
     event.target.parentNode.remove();
+    chatty.disableButton();
 		} else {
       console.log("nothing matches", event.target);
     }

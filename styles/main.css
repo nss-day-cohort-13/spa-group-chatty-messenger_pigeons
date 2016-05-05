@@ -106,3 +106,15 @@ body {
   box-shadow: 1px 1px 3px #989898;
 }
 
+@media (max-width: 600px) {
+
+  .team-name {
+    font-size: 1.6em;
+  }
+
+
+.all-large-text {
+	font-size: 4em;
+
+}
+
