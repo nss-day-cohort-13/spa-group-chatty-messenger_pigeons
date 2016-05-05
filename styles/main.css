@@ -63,7 +63,7 @@ body {
 }
 
 /*styles the box in which all the messages go.*/
-#message-output {
+.message-output {
   border: 4px solid #D8D8D8;
   border-radius: 4px;
   min-height: 400px;
@@ -106,6 +106,13 @@ body {
   box-shadow: 1px 1px 3px #989898;
 }
 
+.editButton {
+  position: absolute;
+  bottom: 0;
+  right: 120px;
+  box-shadow: 1px 1px 3px #989898;
+
+}
 @media (max-width: 600px) {
 
   .team-name {

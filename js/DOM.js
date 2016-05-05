@@ -27,7 +27,9 @@ messageInput.focus();
 document.querySelector("body").addEventListener("click", function() {
 	if (event.target.className === "btn btn-default btn-xs deleteButton") {
 		chatty.deleteMessage();
-	}
+	} else if (event.target.className === "btn btn-default btn-xs editButton") {
+    chatty.editMessage();
+  }
 });
 
 clearMessage.addEventListener("click", temporary);
