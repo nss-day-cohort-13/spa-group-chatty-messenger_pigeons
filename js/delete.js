@@ -10,6 +10,8 @@ if (event.target.className === "btn btn-default btn-xs deleteButton") {
     chatty.setMessageArray(deleteArray);
     event.target.parentNode.remove();
 
+    chatty.disableButton();
+
 		} else {
       //console.log("nothing matches", event.target);
     }
