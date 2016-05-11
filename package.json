@@ -1,0 +1,26 @@
+{
+  "name": "messengerpigeons",
+  "version": "1.0.0",
+  "description": "individual jquerifying of chatty app group project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeganCFord/spa-group-chatty-messenger_pigeons.git"
+  },
+  "author": "megan ford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeganCFord/spa-group-chatty-messenger_pigeons/issues"
+  },
+  "homepage": "https://github.com/MeganCFord/spa-group-chatty-messenger_pigeons#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-watch": "^4.3.5",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
+  }
+}

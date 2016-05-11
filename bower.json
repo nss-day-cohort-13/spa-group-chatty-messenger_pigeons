@@ -1,0 +1,20 @@
+{
+  "name": "messengerpigeons",
+  "description": "individual jquerifying of chatty app group project",
+  "main": "index.html",
+  "authors": [
+    "megan ford"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MeganCFord/spa-group-chatty-messenger_pigeons",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^2.2.3"
+  }
+}
