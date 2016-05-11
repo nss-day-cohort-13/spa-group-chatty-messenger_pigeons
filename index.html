@@ -1,3 +1,5 @@
+<!-- elements should be edited so: 1. IDs come first. 2. custom classes come first. 3. bootstrap classes come last. -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +12,54 @@
 	<link rel = "stylesheet" href = "styles/darktheme.css">
 </head>
 <body>
-	<div class="container-fluid">
-		<div id="navBar" class="row topnav navbar navbar-fixed-top">
-					<!--column with logo in it. -->
-					<div id="logoDiv" class="logoDiv col-xs-4 col-md-3 col-lg-2">
-						<img id="logoImg" class="pigeonLogo img-responsive" src="images/pigeon2.jpg" alt="logo">
-					</div>
-					<!--column with  other navbar information in it. -->
-					<div id="navRight" class="navRight col-xs-8 col-md-9 col-lg-10">
-		  			<h1 id="teamName">Messenger Pigeons</h1>
-		  			<p id="slogan">Publish Your Opinions the 19th Century Way: Now With jQuery!</p>
-		  			<div id="inputAndDeleteButtonDiv" class="inputAndDeleteButtonDiv form-group">
-			  			<!-- text input area -->
-							<input id="messageInputBox" class="messageinputBox" type="text" placeholder="Type your message here! 'Enter' to submit.">
-							<!-- delete button -->
-							<button id="clearAllMessagesButton" class="clearAllMessageesButton btn btn-default btn-sm">Delete all messages</button>
+	<wrapper>
+		<div class="container-fluid">
+			<div id="topNav" class="topNav row navbar navbar-fixed-top">
+
+						<!--column with logo in it. -->
+						<div id="logoDiv" class="logoDiv col-xs-4 col-md-3 col-lg-2">
+							<img id="logoImg" class="logoImg img-responsive" src="images/pigeon2.jpg" alt="logo">
 						</div>
-						<!-- div with the two styles checkboxes. -->
-						<div id="styles" class="styles">
-							<input id="darkTheme" type="checkbox" name="darkTheme" value="darkTheme">  Dark Theme</input>
-							<input id="largeText" type="checkbox" name="largeText" value="largeText">  Large Text</input>
+
+						<!--column with  other navbar information in it. -->
+						<div id="navRight" class="navRight col-xs-8 col-md-9 col-lg-10">
+			  			<h1 id="teamName"class="teamName">{Messenger Pigeons}</h1>
+			  			<p id="slogan">Publish Your Opinions the 19th Century Way</p> <p class="caveat">*Now With jQuery!</p>
+
+			  			<div id="inputAndDeleteButtonDiv" class="inputAndDeleteButtonDiv form-group">
+				  			<!-- text input area -->
+								<input id="messageInputBox" class="messageinputBox" type="text" placeholder="Type your message here! 'Enter' to submit.">
+								<!-- delete button -->
+								<button id="clearAllMessagesButton" class="clearAllMessagesButton btn btn-default btn-xs">Delete all messages</button>
+							</div>
+
+							<!-- div with the two styles checkboxes. -->
+							<div id="styles" class="styles">
+								<p class="tiny">Change Color Schemes</p>
+								<label class="checkbox-inline">
+									<input id="darkTheme" type="checkbox" name="darkTheme" value="darkTheme">  Dark Theme</input>
+								</label>
+								<label class="checkbox-inline">
+									<input id="largeText" type="checkbox" name="largeText" value="largeText">  Large Text</input>
+								</label>
+							</div>
 						</div>
-					</div>
-		</div> 
-	</div>
-	<!-- outputarea row. -->
-	<div id="outputAreaRow" class="outputAreaRow row">
-		<!-- EMPTY left column for centering output div. -->
-		<div class="col-xs-1 col-lg-2">
+			</div> 
 		</div>
-		<!-- All of the messages will go in here! -->
-		<div id="messageOutputDiv" class="messageOutputDiv col-xs-10 col-lg-8" >
+		<!-- outputarea row. -->
+		<div id="outputAreaRow" class="outputAreaRow row">
+			<!-- EMPTY left column for centering output div. -->
+			<div class="col-xs-1 col-lg-2">
+			</div>
+			<!-- All of the messages will go in here! -->
+			<div id="messageOutputDiv" class="messageOutputDiv col-xs-10 col-lg-8" >
+			</div>
+			<!-- EMPTY right column for centering output div. -->
+			<div class="col-xs-1 col-lg-2">
+			</div>
+			</div>
 		</div>
-		<!-- EMPTY right column for centering output div. -->
-		<div class="col-xs-1 col-lg-2">
-		</div>
-		</div>
-	</div>
+	</wrapper>
 
 	<!-- JS files. -->
 	<script src = "js/create.js"></script>
