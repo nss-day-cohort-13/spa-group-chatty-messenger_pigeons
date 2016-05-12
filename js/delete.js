@@ -14,7 +14,7 @@ var chatty = (function(chatty)  {
       $(".clearAllMessagesButton").attr("disabled") ? 
       $(".clearAllMessagesButton").removeAttr("disabled") 
       //had to put a thing to do here. easier to check if the disabled attribute exists here using ternary, because if disabled doesn't exist, an if else statement breaks. 
-      : (console.log("clear all messages button was never disabled"));
+      : (console.log("'clear all messages' button was not disabled"));
     }
   };
   chatty.disableDeleteAllButton();

@@ -21,6 +21,14 @@ var chatty = (function(chatty) {
   };//end of toggleLargeText. 
 
 
+  //ALTERNATE VERSION: toggling class. this doesn't work as well because I have custom sizes which are overridden and then the defaults are added to, resulting in some elements being much smaller/much larger than their originals. 
+  
+  // chatty.toggleLargeText = function(checkbox){
+
+  // $(".toggleable").each(function(){
+  //     $(this).toggleClass("largeText");
+  //   })
+  // }
 
   return chatty;
 }(chatty || {}));

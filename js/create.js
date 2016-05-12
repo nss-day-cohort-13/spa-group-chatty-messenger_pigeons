@@ -9,7 +9,15 @@ var chatty = (function(chatty) {
 
   var messageArray = [];
 
-  
+  chatty.getMessageArray = function(){
+    return messageArray;
+  }
+
+
+  chatty.injectMessageArrayIntoDom = function() {
+
+    console.log("message array", messageArray);
+  }
 
   // // setter to take in messages from jsonloader
   // chatty.setMessageArray = function (messages) {

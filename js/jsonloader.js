@@ -24,18 +24,37 @@ var chatty = (function (chatty) {
   chatty.loadStockMessages()
   .then
     (function(stockMessages){
-      chatty.injectStockMessages(stockMessages);
+      chatty.injectStockMessagesintoArray(stockMessages);
     }),
     (function(error){
       //noted that gulp here would prefer a function call. 
-      console.log("error", error);
+      chatty.jsonError(error);
     });
 
+  //function to run if json has an error.  
+  chatty.jsonError = function() {
+    console.log("json error", error );
+  };
+
   //function to run when stock messages are loaded.
-    chatty.injectStockMessages = function(stockMessages){
-    //put the messages through a loop- the same as the 'enter press' loop?
-    console.log("stock messages object", stockMessages );
-    };
+  chatty.injectStockMessagesintoArray = function(stockMessages){
+    
+    //grab empty array from create.js. 
+    let messageArray = chatty.getMessageArray();
+    //isolate the array of messages.
+    let eachMessage = stockMessages.jsonMessages;
+
+    //push each message from json array into dom array.
+    eachMessage.forEach(function(message) {
+      
+      messageArray.push(message.message);
+
+    }) //end of forEach loop. 
+
+    //now that I have the array populated, load into the dom. 
+    chatty.injectMessageArrayIntoDom();  
+  } //end of injectStockMessagesIntoArray.
+
 
   return chatty;
 
