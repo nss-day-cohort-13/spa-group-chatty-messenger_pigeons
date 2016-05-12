@@ -20,6 +20,7 @@ var chatty = (function (chatty) {
     });//end of promise
   };//end of loadStockMessages
 
+  //run promise and what happens after promise.
   chatty.loadStockMessages()
   .then
     (function(stockMessages){
@@ -30,10 +31,11 @@ var chatty = (function (chatty) {
       console.log("error", error);
     });
 
-chatty.injectStockMessages = function(stockMessages){
-  //put the messages through a loop- the same as the 'enter press' loop?
-  console.log("stock messages object",stockMessages );
-};
+  //function to run when stock messages are loaded.
+    chatty.injectStockMessages = function(stockMessages){
+    //put the messages through a loop- the same as the 'enter press' loop?
+    console.log("stock messages object", stockMessages );
+    };
 
   return chatty;
 
