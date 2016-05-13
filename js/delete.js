@@ -31,17 +31,7 @@ var chatty = (function(deletechatty)  {
 
   });
   
-
   
-
-
-
-
-  deletechatty.editMessage = function() {
-
-    
-
-  }
 
   return deletechatty;
 

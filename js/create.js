@@ -87,8 +87,7 @@ var chatty = (function(creatorchatty) {
   };
 
   //enter key event listener. decides which function to run. 
-  //
-  //
+  
   $("#messageInputBox").on("keyup", function(event){
 
     if (editableStatus === false) {
@@ -98,14 +97,16 @@ var chatty = (function(creatorchatty) {
     } else if (editableStatus === true) {
         if (event.keyCode === 13){
           editableStatus = false;
+          $("#messageInputBox").blur();
           chatty.editMessageObject($("#messageInputBox").val());
 
         } else {
-          //temporary text mirroring. actual array change happens when enter key is pressed above. 
-           $("#"+currentMessageId).children("p").text($("#messageInputBox").val());
+          //temporary text mirroring. actual array change happens when enter key is pressed above.
+          var currentInputText = $("#messageInputBox").val();
+           $("#"+currentMessageId).children("p").text(currentInputText);
+           
         }
-
-        
+  
     } //end of editable statement
 
   });//end of event listener function
@@ -128,6 +129,8 @@ var chatty = (function(creatorchatty) {
 
     chatty.injectMessageArrayIntoDom();
   };
+
+
 
   creatorchatty.editMessageObject = function() {
 
@@ -153,7 +156,7 @@ var chatty = (function(creatorchatty) {
     for (var i = 0; i < messageArray.length; i++) {
 
     let messageHTML = `<div id="${messageArray[i].id}" class="messageCard">
-                          <p class = "toggleable">${messageArray[i].message}</p>
+                          <p class = "toggleable darkable1">${messageArray[i].message}</p>
                           <button class="btn btn-default btn-xs editButton">Edit Message</button>
                           <button class="btn btn-default btn-xs deleteButton">Delete Message</button>
                           </div>`;

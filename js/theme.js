@@ -34,6 +34,14 @@ var chatty = (function(chatty) {
   //     $(this).toggleClass("largeText");
   //   })
   // }
+   
+  $("#darkTheme").click(function(){
+
+    $(".darkable1").toggleClass("dark1");
+    $(".darkable2").toggleClass("dark2");
+    $(".darkable3").toggleClass("dark3");
+  }) 
+  
 
   return chatty;
 }(chatty || {}));
