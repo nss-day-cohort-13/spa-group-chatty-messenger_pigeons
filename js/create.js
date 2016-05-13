@@ -21,13 +21,42 @@ var chatty = (function(creatorchatty) {
     return messageArray;
   };
 
-  //runs when edit OR DELETE button is pressed.
+
+  //I set this variable to true to decide whether the active array item is being edited or deleted. 
+
+  var editableStatus = false;
+
+  creatorchatty.getActivateCardEditing = function() {
+    return editableStatus ;
+  };
+  
+  //event listener for delete and edit buttons on messages. 
+  $("#messageOutputDiv").on("click", function(event){
+    
+    if ($(event.target).is(".deleteButton")) {
+      editableStatus = false;
+      var currentMessageIndex = chatty.findMessageIndex(event.target);
+
+    } else if ($(event.target).is(".editButton")) {
+
+      editableStatus = true;
+      var currentMessageIndex = chatty.findMessageIndex(event.target);
+
+    }//end of if else statement
+  }); //end of event listener
+
+  //took this out of find message index so it could be accessed hopefully by other things. 
+  var currentIndex; 
+  var currentMessageId;
+
+
+  //runs when edit OR delete button is pressed.
   creatorchatty.findMessageIndex = function(targetMessage) {
 
-    var currentMessageId= $(targetMessage.closest(".messageCard")).prop("id");
+    currentMessageId= $(targetMessage.closest(".messageCard")).prop("id");
 
     
-    var currentIndex = messageArray.findIndex(function (message) {
+    currentIndex = messageArray.findIndex(function (message) {
       return message.id === currentMessageId;
     });
 
@@ -43,12 +72,14 @@ var chatty = (function(creatorchatty) {
     if (editableStatus === false) {
 
       chatty.removeMessageFromArray(currentIndex);
-    } else {
+      chatty.injectMessageArrayIntoDom();
 
-      console.log("will be editing the stuff here" );
+    } else if (editableStatus === true){
+      //put the message text into the input box. 
+      $("#messageInputBox").val(messageArray[currentIndex].message);
+      $("#messageInputBox").focus();
     }
 
-    chatty.injectMessageArrayIntoDom();
   };//end of editOrDelete
 
   creatorchatty.removeMessageFromArray = function(currentIndex) {
@@ -56,20 +87,27 @@ var chatty = (function(creatorchatty) {
   };
 
   //enter key event listener. decides which function to run. 
+  //
+  //
   $("#messageInputBox").on("keyup", function(event){
 
-    if (event.keyCode === 13) {
-
-      var editableStatus = chatty.getActivateCardEditing();
-
-      if (editableStatus === false) {
-
+    if (editableStatus === false) {
+      if (event.keyCode === 13) {
         chatty.makeNewMessageObject();
+      };  //end of enter key if statement
+    } else if (editableStatus === true) {
+        if (event.keyCode === 13){
+          editableStatus = false;
+          chatty.editMessageObject($("#messageInputBox").val());
+
+        } else {
+          //temporary text mirroring. actual array change happens when enter key is pressed above. 
+           $("#"+currentMessageId).children("p").text($("#messageInputBox").val());
+        }
+
         
-      } else {
-        console.log("edit function will go here");
-      } //end of edit if statement
-    } //end of enter key if statement
+    } //end of editable statement
+
   });//end of event listener function
 
   creatorchatty.makeNewMessageObject = function() {
@@ -90,6 +128,18 @@ var chatty = (function(creatorchatty) {
 
     chatty.injectMessageArrayIntoDom();
   };
+
+  creatorchatty.editMessageObject = function() {
+
+    let currentMessageObject = messageArray[currentIndex];
+    currentMessageObject.message = $("#messageInputBox").val();
+
+    $("#messageinputBox").val("");
+
+    chatty.injectMessageArrayIntoDom();
+  }
+
+  
 
 
   //inject messages from array into DOM.  
@@ -115,6 +165,8 @@ var chatty = (function(creatorchatty) {
     chatty.disableDeleteAllButton();
   }; //end of injectMessageArrayIntoDom
  
+
+
 
   return creatorchatty;
 

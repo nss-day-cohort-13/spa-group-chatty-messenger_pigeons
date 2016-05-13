@@ -32,29 +32,16 @@ var chatty = (function(deletechatty)  {
   });
   
 
-  //I set this variable to true to decide whether the active array item is being edited or deleted. 
-
-  var activateCardEditing = false;
-
-  deletechatty.getActivateCardEditing = function() {
-    return activateCardEditing;
-  };
   
-  //event listener for delete and edit buttons on messages. 
-  $("#messageOutputDiv").on("click", function(event){
+
+
+
+
+  deletechatty.editMessage = function() {
+
     
-    if ($(event.target).is(".deleteButton")) {
-      activateCardEditing = false;
-      var currentMessageIndex = chatty.findMessageIndex(event.target);
 
-    } else if ($(event.target).is(".editButton")) {
-
-      activateCardEditing = true;
-      var currentMessageIndex = chatty.findMessageIndex(event.target);
-
-    }//end of if else statement
-  }); //end of event listener
-
+  }
 
   return deletechatty;
 
