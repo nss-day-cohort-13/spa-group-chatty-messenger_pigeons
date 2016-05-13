@@ -3,6 +3,11 @@
 
 var chatty = (function(chatty) {
 
+  //event listener for toggle large text checkbox. 
+  $("#largeText").click(function(){
+    chatty.toggleLargeText($(this));
+  });
+
   chatty.toggleLargeText = function(checkbox) {
 
     //set the list of elements to change font size for. 
