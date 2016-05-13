@@ -9,18 +9,60 @@ var chatty = (function(creatorchatty) {
 
   var messageArray = [];
 
-  var activateCardEditing = false;
+  
 
   creatorchatty.getMessageArray = function(){
     return messageArray;
+  };
+
+  //runs when delete all button is pressed.
+  creatorchatty.clearMessageArray = function() {
+    messageArray = [];
+    return messageArray;
+  };
+
+  //runs when edit OR DELETE button is pressed.
+  creatorchatty.findMessageIndex = function(targetMessage) {
+
+    var currentMessageId= $(targetMessage.closest(".messageCard")).prop("id");
+
+    
+    var currentIndex = messageArray.findIndex(function (message) {
+      return message.id === currentMessageId;
+    });
+
+    //now that I know which item in the array to hit up, now to decide whether to edit it or delete it. 
+    chatty.editOrDelete(currentIndex);
+
+  };
+
+  creatorchatty.editOrDelete = function(currentIndex) {
+
+    var editableStatus = chatty.getActivateCardEditing(); 
+
+    if (editableStatus === false) {
+
+      chatty.removeMessageFromArray(currentIndex);
+    } else {
+
+      console.log("will be editing the stuff here" );
+    }
+
+    chatty.injectMessageArrayIntoDom();
+  };//end of editOrDelete
+
+  creatorchatty.removeMessageFromArray = function(currentIndex) {
+    messageArray.splice(currentIndex, 1); 
   };
 
   //enter key event listener. decides which function to run. 
   $("#messageInputBox").on("keyup", function(event){
 
     if (event.keyCode === 13) {
-  
-      if (activateCardEditing === false) {
+
+      var editableStatus = chatty.getActivateCardEditing();
+
+      if (editableStatus === false) {
 
         chatty.makeNewMessageObject();
         
@@ -53,6 +95,7 @@ var chatty = (function(creatorchatty) {
   //inject messages from array into DOM.  
   creatorchatty.injectMessageArrayIntoDom = function() {
 
+    console.log("message array from injector", messageArray);
     //clear the dom first, so I don't end up with any messages twice. 
     $("#messageOutputDiv").text("");
 
@@ -68,6 +111,8 @@ var chatty = (function(creatorchatty) {
       $("#messageOutputDiv").append(messageHTML);
       
     }//end of for loop
+
+    chatty.disableDeleteAllButton();
   }; //end of injectMessageArrayIntoDom
  
 
