@@ -4,13 +4,14 @@
 "use strict"; 
 
 
-var chatty = (function (chatty) {
+var chatty = (function (jsonloaderchatty) {
 
-  chatty.loadStockMessages = function() {
+  jsonloaderchatty.loadStockMessages = function() {
     return new Promise((resolve, reject) =>{
 
       $.ajax({
         url: "./../data/messages.json"
+        //preparing for possible XHR outcomes
       }).done(function(stockMessages) {
         resolve(stockMessages);
       }).fail(function(xhr, status, error){
@@ -32,12 +33,12 @@ var chatty = (function (chatty) {
     });
 
   //function to run if json has an error.  
-  chatty.jsonError = function() {
+  jsonloaderchatty.jsonError = function() {
     console.log("json error", error );
   };
 
   //function to run when stock messages are loaded.
-  chatty.injectStockMessagesintoArray = function(stockMessages){
+  jsonloaderchatty.injectStockMessagesintoArray = function(stockMessages){
     
     //grab empty array from create.js. 
     let messageArray = chatty.getMessageArray();
@@ -47,15 +48,16 @@ var chatty = (function (chatty) {
     //push each message from json array into dom array.
     eachMessage.forEach(function(message) {
       
-      messageArray.push(message.message);
+      messageArray.push(message);
 
     }) //end of forEach loop. 
 
     //now that I have the array populated, load into the dom. 
     chatty.injectMessageArrayIntoDom();  
+
   } //end of injectStockMessagesIntoArray.
 
 
-  return chatty;
+  return jsonloaderchatty;
 
 }(chatty || {}));

@@ -1,7 +1,7 @@
 
 /*COLORS: eyedroppered from pigeon image so as to match better. 
   light grey: #d2d2d2;
-  light-mid grey: 9a9a9a;
+  light-mid grey: #9a9a9a;
   mid-dark grey: #7a7a7a;
   dark grey: #505050;  */
 
@@ -92,57 +92,59 @@ wrapper {
 
 /*makes the set of columns in the output div have some top and bottom space.*/
 .outputAreaRow {
+  background-color: #d2d2d2;
   padding-top: 290px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   margin-right: 0;
 }
 
 /*styles the box in which all the messages go.*/
-.message-output {
+.messageOutputDiv {
   border: 4px solid #D8D8D8;
   border-radius: 4px;
   min-height: 400px;
   background-color: white;
-  box-shadow: 2px 2px 3px #989898;
+  box-shadow: 2px 2px 3px #9a9a9a;
   padding-top: 14px;
 }
 
-.amessage {
+.messageCard {
   margin-bottom: 5px;
   position: relative;
   padding: 11px;
 }
 /*styles the text box in which each message sits.*/
-.amessage p {
+.messageCard p {
   display: inline-block;
   width: 100%;
   padding: 10px;
   margin-bottom: 1px;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px #989898;
+  box-shadow: 1px 1px 3px #9a9a9a;
   overflow-x: scroll;
+  background-color: #d2d2d2;
 }
 
-/*these next two alternate the text box colors.*/
-.amessage:nth-of-type(odd) p {
-  background-color: #D8D8D8;
-}
 
-.amessage:nth-of-type(even) p {
-  background-color: #E8E8E8;
-}
-
-/*positions the delete button.*/
+/*positions the delete and edit buttons.*/
 
 .deleteButton {
   position: absolute;
   bottom: 0;
   right: 0;
-  box-shadow: 1px 1px 3px #989898;
+  box-shadow: 1px 1px 3px #9a9a9a;
+}
+
+.editButton {
+  position: absolute;
+  bottom: 0;
+  right: 122px;
+  box-shadow: 1px 1px 3px #9a9a9a;
 }
 
 /*****************************
 *****MEDIA QUERY************
+*for logo size only, really
 ******************************/
 
 @media (max-width: 680px) {
@@ -155,9 +157,10 @@ wrapper {
 }
 
 /*****************************
-*****LARGE TEXT STYLING************
+*****LARGE TEXT STYLING*******
+*not used
 ******************************/
-/*not used.*/
+
 .largeText {
 	font-size: 2em;
 }

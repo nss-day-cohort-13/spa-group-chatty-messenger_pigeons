@@ -2,44 +2,33 @@
 
 "use strict";
 
-var chatty = (function(chatty) {
+var chatty = (function(creatorchatty) {
 
 
   //this is the private array that holds all the messages
 
   var messageArray = [];
 
-  chatty.getMessageArray = function(){
+  creatorchatty.getMessageArray = function(){
     return messageArray;
-  }
+  };
+
+  //inject messages from array into DOM. runs after 
+  creatorchatty.injectMessageArrayIntoDom = function() {
+
+    for (var i = 0; i < messageArray.length; i++) {
+
+    let messageHTML = `<div id="${messageArray[i].id}" class="messageCard">
+                          <p>${messageArray[i].message}</p>
+                          <button class="btn btn-default btn-xs editButton">Edit Message</button>
+                          <button class="btn btn-default btn-xs deleteButton">Delete Message</button>
+                          </div>`;
+
+      $("#messageOutputDiv").append(messageHTML);
+    }//end of for loop
+  }; //end of injectMessageArrayIntoDom
 
 
-  chatty.injectMessageArrayIntoDom = function() {
-
-    console.log("message array", messageArray);
-  }
-
-  // // setter to take in messages from jsonloader
-  // chatty.setMessageArray = function (messages) {
-  //   messageArray = messages;
-  // },
-
-
-  // /*this is a function that will run as part of
-  // //the main array-to-dom loop. it creates the
-  // //div that each message will appear within,
-  // //adds a class for styling, and basically allows
-  // //an event listener to be added to each one if
-  // //we decide we'd like to do that. It's nicer
-  // //than +='ing the entire div using .innerHTML.
-  // */
-
-  // chatty.makeMessageDiv = function() {
-  //   let messageDiv = document.createElement("div");
-  //   messageDiv.className = "amessage";
-  //   messageOutput.appendChild(messageDiv);
-  //   return messageDiv;
-  // },
 
 
   // //logs each key pressed that isn't enter, in the input text box. Probably don't need this, but just in case.
@@ -102,7 +91,7 @@ var chatty = (function(chatty) {
   //   return messageArray;
   // }
 
-  return chatty;
+  return creatorchatty;
 
 
 }(chatty || {}));
