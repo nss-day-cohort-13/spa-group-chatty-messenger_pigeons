@@ -1,63 +1,46 @@
 // this module loads the messages 
 //from the JSON file into messageArray
 
-"use strict"; 
+var chatty = (function (chatty) {
 
+  // an array to hold messages wrapped as POJOs, first step from JSON
+  var messageObjectsArray = [];
 
-var chatty = (function (jsonloaderchatty) {
+  // array that will contain messages as strings, no more objects
+  var messagesArray = [];
 
-  jsonloaderchatty.loadStockMessages = function() {
-    return new Promise((resolve, reject) =>{
+  // create a request to retrieve JSON 
+  var loader = new XMLHttpRequest();
 
-      $.ajax({
-        url: "./../data/messages.json"
-        //preparing for possible XHR outcomes
-      }).done(function(stockMessages) {
-        resolve(stockMessages);
-      }).fail(function(xhr, status, error){
-        reject(error);
-      }); //end of AJAX
+  // set up loader with callback function
+  loader.addEventListener("load", function () {
 
-    });//end of promise
-  };//end of loadStockMessages
-
-  //run promise and what happens after promise.
-  chatty.loadStockMessages()
-  .then
-    (function(stockMessages){
-      chatty.injectStockMessagesintoArray(stockMessages);
-    }),
-    (function(error){
-      //noted that gulp here would prefer a function call. 
-      chatty.jsonError(error);
-    });
-
-  //function to run if json has an error.  
-  jsonloaderchatty.jsonError = function() {
-    console.log("json error", error );
-  };
-
-  //function to run when stock messages are loaded.
-  jsonloaderchatty.injectStockMessagesintoArray = function(stockMessages){
+    chatty.disableButton();
     
-    //grab empty array from create.js. 
-    let messageArray = chatty.getMessageArray();
-    //isolate the array of messages.
-    let eachMessage = stockMessages.jsonMessages;
+    // get the json and put it into a local (private) array 
+    messageObjectsArray = JSON.parse(this.responseText).jsonMessages;
 
-    //push each message from json array into dom array.
-    eachMessage.forEach(function(message) {
-      
-      messageArray.push(message);
+    // strip off the object wrappers from the messages
+    messagesArray = messageObjectsArray.map(extractMessageFromObject);
 
-    }) //end of forEach loop. 
+    // transfer the messages into the private array that create iife can access
+    chatty.setMessageArray(messagesArray);
 
-    //now that I have the array populated, load into the dom. 
-    chatty.injectMessageArrayIntoDom();  
+    // post all the messages onto the webpage
+    chatty.loopThroughArray();
 
-  } //end of injectStockMessagesIntoArray.
+  });
 
+  // now do the actual load from JSON file
+  loader.open("GET", "../messages.json");
+  loader.send();
 
-  return jsonloaderchatty;
+  // helper function to put clean messages (no object wrappers) into array
+  function extractMessageFromObject (obj) {
+    return obj.message;
+  }
+
+  // all done
+  return chatty;
 
 }(chatty || {}));
