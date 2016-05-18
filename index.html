@@ -1,53 +1,82 @@
+<!-- elements should be edited so: 1. IDs come first. 2. custom classes come first. 3. bootstrap classes come last. -->
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Messenger Pigeon</title>
-	<link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+	<title>Jquerified: Messenger Pigeon</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
 	<link rel = "stylesheet" href = "styles/main.css">
 	<link rel = "stylesheet" href = "styles/darktheme.css">
 </head>
 <body>
-	<div class= "container-fluid" id="container-fluid">
-		<div class= "row topnav navbar navbar-fixed-top" id="nav-bar">
-					<!-- here's the column with the logo in it. -->
-					<div class="logo col-xs-4 col-md-3 col-lg-2">
-						<img class = "pigeon-logo img-responsive" src="images/pigeon2.jpg" alt="logo">
-					</div>
-					<!-- here's the column with the other navbar information in it. -->
-					<div class = "navright col-xs-8 col-md-9 col-lg-10">
-		  			<h1 class= "team-name">Messenger Pigeons</h1>
-		  			<p>Publish your opinions the 19th century way</p>
-		  			<div class ="form-group" >
-							<input type="text" class = "#" id="message-input" placeholder="Type your message here! 'Enter' to submit.">
-							<button class = "btn btn-default btn-sm" id="clear-all-messages">Delete all messages</button>
-						</div>
-						<div class = "styles">
-							<input type="checkbox" name="dark-theme" value="dark-theme" id="dark-theme">  Dark Theme</input>
-							<input type="checkbox" name="large-text" value="large-text" id="large-text">  Large Text</input>
-						</div>
-					</div>
-		</div>
-	</div>
-	<div class = "row outputArea" id="outputArea">
+	<wrapper>
+		<div class="container-fluid">
+			<div id="topNav" class="topNav row navbar navbar-fixed-top">
 
-		<!-- empty left column for centering output div. -->
-		<div class = "col-xs-1 col-lg-2">
+						<!--column with logo in it. -->
+						<div id="logoDiv" class="logoDiv col-xs-4 col-md-3 col-lg-2">
+							<img id="logoImg" class="logoImg img-responsive" src="images/pigeon2.jpg" alt="logo">
+						</div>
+
+						<!--column with  other navbar information in it. -->
+						<div id="navRight" class="navRight col-xs-8 col-md-9 col-lg-10">
+			  			<h1 id="teamName"class="teamName toggleable">{Messenger Pigeons}</h1>
+			  			<p id="slogan" class = "toggleable">Publish Your Opinions the 19th Century Way</p> 
+			  			<p class="caveat toggleable">*Now With jQuery!</p>
+
+			  			<div id="inputAndDeleteButtonDiv" class="inputAndDeleteButtonDiv form-group">
+				  			<!-- text input area -->
+								<input id="messageInputBox" class="messageinputBox toggleable" type="text" placeholder="Type your message here! 'Enter' to submit.">
+								<!-- delete button -->
+								<button id="clearAllMessagesButton" class="clearAllMessagesButton btn btn-default btn-xs">Delete all messages</button>
+							</div>
+
+							<!-- div with the two styles checkboxes. -->
+							<div id="styles" class="styles">
+								<p class="tiny toggleable">Change Color Schemes</p>
+								<label class="toggleable checkbox-inline">
+									<input id="darkTheme" type="checkbox" name="darkTheme" value="darkTheme">  Dark Theme</input>
+								</label>
+								<label class="toggleable checkbox-inline">
+									<input id="largeText" type="checkbox" name="largeText" value="largeText">  Large Text</input>
+								</label>
+							</div>
+						</div>
+			</div> 
 		</div>
-		<!-- All of the messages will go in here! -->
-		<div id="message-output" class= "message-output col-xs-10 col-lg-8" >
+		<!-- outputarea row. -->
+		<div id="outputAreaRow" class="outputAreaRow darkable1 row">
+			<!-- EMPTY left column for centering output div. -->
+			<div class="col-xs-1 col-lg-2">
+			</div>
+			<!-- All of the messages will go in here! -->
+			<div id="messageOutputDiv" class="messageOutputDiv col-xs-10 col-lg-8">
+			</div>
+			<!-- EMPTY right column for centering output div. -->
+			<div class="col-xs-1 col-lg-2">
+			</div>
+			</div>
 		</div>
-		<!-- empty right column for centering output div. -->
-		<div class = "col-xs-1 col-lg-2">
-		</div>
-		</div>
-	</div>
+	</wrapper>
+
+	<!-- JS files. -->
+	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+
+	<script src = "js/create.js"></script>
+	<!-- <script src="js/DOM.js"></script> -->
+	<script src = "js/theme.js"></script>
+	<script src="js/delete.js"></script>
+	<script src="js/jsonloader.js"></script>
 </body>
-
-<script src = "js/create.js"></script>
-<script src="js/DOM.js"></script>
-<script src="js/delete.js"></script>
-<script src="js/jsonloader.js"></script>
 </html>
+<!-- 
+what each message div looks like, for future reference.
+
+<div id="${messageArray[i].id}" class="messageCard">
+  <p>${messageArray[i].message}</p>
+  <button class="btn btn-default btn-xs editButton">Edit Message</button>
+  <button class="btn btn-default btn-xs deleteButton">Delete Message</button>
+  </div> -->

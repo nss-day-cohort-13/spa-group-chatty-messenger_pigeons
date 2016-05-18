@@ -1,27 +1,8 @@
 
-/*makes the theme dark*/
-/* changes to all the text color and main div background */
-.darkNav {
-  background-color: black ;
-  color: lightskyblue;
-}
 
-/* changes to the navbar  background color */
-.darkBackground {
-  background-color: black;
+.dark1 {
+  background: black !important;
+  color: white;
 }
-/* make message background area dark grey */
-.grayBackground {
-  background-color: darkgray;
-}
-/*change text box colors.*/
-p.blueField{
-  background-color: darkblue;
-}
-
-p.cyanField{
-  background-color: darkcyan;
-}
-
 
 
