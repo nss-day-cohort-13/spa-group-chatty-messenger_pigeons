@@ -1,8 +1,3 @@
-npm init 
-bower init 
-
-
-
 # Chatty Group Project
 
 ## Setup
